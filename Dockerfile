@@ -1,11 +1,11 @@
-FROM anatolelucet/neovim:0.10.1-ubuntu
+FROM ubuntu
 COPY <<-EOT /main.cpp
 int main() {}
 EOT
 RUN <<EOT
     apt update  
     # DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install -y git lldb=1:18.0-59~exp2 clang wget
-    DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install -y git clang wget unzip 
+    DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install -y git clang wget unzip neovim
     git clone https://github.com/mfussenegger/nvim-dap.git ~/.config/nvim/pack/plugins/start/nvim-dap
     wget https://github.com/vadimcn/codelldb/releases/download/v1.10.0/codelldb-`arch`-linux.vsix
     unzip codelldb-`arch`-linux.vsix
